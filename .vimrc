@@ -1,59 +1,44 @@
 call plug#begin('~/.vim/plugged')
-Plug 'Valloric/YouCompleteMe'
-Plug 'ajh17/Spacegray.vim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-sensible'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'xolox/vim-easytags'
-Plug 'majutsushi/tagbar'
-Plug 'xolox/vim-misc'
-Plug 'rizzatti/dash.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'flazz/vim-colorschemes'
 call plug#end()
-filetype plugin indent on    " required
+nmap <leader>' :NERDTreeToggle<CR>
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-set backspace=indent,eol,start
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
 
-colorscheme spacegray
-set number
-set relativenumber
-set ruler
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set showcmd
-set wildmenu
-set lazyredraw
-set showmatch
-set laststatus=2
-set cursorline
-set background=dark
-let g:spacegray_underline_search = 1
-let g:spacegray_italicize_comments = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1 
-let g:airline_theme='hybrid'
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+set encoding=utf8
+colorscheme 256-grayvim
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-nmap <silent> <leader>f :NERDTreeTabsFind<CR>
-nmap <silent> <leader>d :Dash 
-let g:nerdtree_tabs_open_on_console_startup = 1
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
-let g:tagbar_autoclose=2
+let g:syntastic_check_on_wq = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'atomic'
 
-nmap <silent> <leader>b :TagbarToggle<CR>
+set relativenumber
+set number
+set tabstop=2 
+set shiftwidth=2 
+set expandtab
