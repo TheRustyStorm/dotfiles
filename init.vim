@@ -55,13 +55,18 @@ set noshowmode                          " Don't show modes such as --INSERT--
 
 nnoremap <leader><leader> :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap gt :tabnext<CR>
+nnoremap gT :tabprevious<CR>
 
 " Move to previous/next
 nnoremap <silent>    <leader>, :BufferPrevious<CR>
 nnoremap <silent>    <leader>. :BufferNext<CR>
 nnoremap <silent>    <leader>s :BufferPick<CR>
+nnoremap <silent>    <leader>c :BufferClose<CR>    
 
 let g:deoplete#enable_at_startup = 1
+" Tab Completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 let g:lightline = {
